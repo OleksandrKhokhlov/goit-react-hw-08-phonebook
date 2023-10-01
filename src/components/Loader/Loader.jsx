@@ -1,12 +1,15 @@
+import { useAuth } from 'hooks';
 import { Grid } from 'react-loader-spinner';
 import { useSelector } from 'react-redux';
-import { selectIsLoading } from 'redux/selectors';
+import { selectIsLoading } from 'redux/contacts/selectors';
 
 export const Loader = () => {
   const isLoading = useSelector(selectIsLoading);
+  const { isRefreshing } = useAuth();
+  
   return (
     <Grid
-      visible={isLoading}
+      visible={isLoading || isRefreshing}
       height="80"
       width="80"
       ariaLabel="MagnifyingGlass-loading"

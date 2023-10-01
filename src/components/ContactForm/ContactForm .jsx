@@ -1,9 +1,9 @@
 import * as Yup from 'yup';
 import { Formik, Field, Form } from 'formik';
-import { AddButton,  EntryField,  ErrorMsg } from './ContactForm.styled ';
-import { useDispatch, useSelector} from 'react-redux';
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { AddButton, EntryField, ErrorMsg } from './ContactForm.styled ';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/contacts/operations';
+import { selectContacts } from 'redux/contacts/selectors';
 
 const nameRegExp =
   /^[a-zA-Zа-яА-Я]+(([' \\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
@@ -30,16 +30,14 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
-  const handlerSubmit = (values, actions) => {
-    const handlerAddContact = () => dispatch(addContact(values));
+  const handleSubmit = (values, actions) => {
+    const handleAddContact = () => dispatch(addContact(values));
 
-    const overlap = contacts
-      .map(({ name }) => name)
-      .includes(values.name);
+    const overlap = contacts.map(({ name }) => name).includes(values.name);
 
     overlap
       ? alert(`${values.name} is already in contacts`)
-      : handlerAddContact();
+      : handleAddContact();
 
     actions.resetForm();
   };
@@ -51,10 +49,9 @@ export const ContactForm = () => {
         phone: '',
       }}
       validationSchema={schema}
-      onSubmit={handlerSubmit}
+      onSubmit={handleSubmit}
     >
       <Form>
-        <h1>Phonebook</h1>
         <EntryField htmlFor="name">
           Name
           <Field id="name" type="text" name="name" />

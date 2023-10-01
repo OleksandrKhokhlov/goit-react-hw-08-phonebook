@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { filterUserByName } from "redux/filterSlice";
+import { filterUserByName } from 'redux/contacts/filterSlice';
 import { FilterLabel } from "./Filter.styled";
 
 export const Filter = () => {
