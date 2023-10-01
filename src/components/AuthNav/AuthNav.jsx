@@ -3,13 +3,13 @@ import { NavLink } from 'react-router-dom';
 
 export const AuthNav = () => {
   return (
-    <div>
-      <Button>
-        <NavLink to="/register">Register</NavLink>
+    <>
+      <Button LinkComponent={NavLink} to="/register" sx={{ color: 'inherit' }}>
+        Register
       </Button>
-      <Button>
-        <NavLink to="/login">Log In</NavLink>
+      <Button LinkComponent={NavLink} to="/login" sx={{ color: 'inherit' }}>
+        Log In
       </Button>
-    </div>
+    </>
   );
 };
