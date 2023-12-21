@@ -6,7 +6,6 @@ import { Filter } from 'components/Filter/Filter';
 import { Contacts } from '../components/Contacts/ContactList ';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
-import { Container } from 'components/Container.styled';
 
 export default function ContactsPage() {
   const errorMessage = useSelector(selectError);
@@ -17,10 +16,10 @@ export default function ContactsPage() {
   }, [dispatch]);
 
   return (
-    <Container>
+    <>
       <ContactForm />
       <Filter />
       {errorMessage ? toast.error(errorMessage) : <Contacts />}
-    </Container>
+    </>
   );
 };

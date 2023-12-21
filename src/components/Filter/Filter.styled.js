@@ -1,12 +1,21 @@
 import styled from '@emotion/styled';
+import { TextField } from '@mui/material';
 
-export const FilterLabel = styled.label`
-  width: fit-content;
-  margin-top: 10px;
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-content: space-around;
-  text-align: left;
-`;
+export const CssTextField = styled(TextField)({
+  '& label.Mui-focused': {
+    color: 'white',
+  },
+  '& .MuiInput-input': { color: 'white' },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'white',
+    },
+    '&:hover fieldset': {
+      borderColor: 'white',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'white',
+    },
+  },
+  label: { color: 'white' },
+});

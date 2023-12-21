@@ -1,21 +1,20 @@
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 import { filterUserByName } from 'redux/contacts/filterSlice';
-import { FilterLabel } from "./Filter.styled";
+import { CssTextField } from './Filter.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
-      <FilterLabel htmlFor="filter">
-        Find contacts by name
-        <input
-          type="text"
-          id="filter"
-          name="filter"
-          onChange={evt => dispatch(filterUserByName(evt.target.value.toLowerCase()))}
-        />
-      </FilterLabel>
-    </>
+    <CssTextField
+      type="text"
+      id="filter"
+      name="filter"
+      label="Find contacts by name"
+      size="small"
+      onChange={evt =>
+        dispatch(filterUserByName(evt.target.value.toLowerCase()))
+      }
+    />
   );
 };
